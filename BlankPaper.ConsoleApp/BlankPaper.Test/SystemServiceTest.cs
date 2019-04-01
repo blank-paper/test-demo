@@ -18,7 +18,7 @@ namespace BlankPaper.Test
             var stu = service.QueryStudent(1001);
 
             Assert.Equal(1001, stu.Id);
-            //Assert.Equal("Alan", stu.Name);
+            Assert.Equal("Alan", stu.Name);
         }
     }
 }
