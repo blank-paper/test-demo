@@ -1,4 +1,5 @@
 ﻿using BlankPaper.ConsoleApp.Domain.Model;
+using BlankPaper.ConsoleApp.Presentation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,21 @@ namespace BlankPaper.ConsoleApp.Domain.Service
         }
 
         #region Business Actions
+
+        /// <summary>
+        /// 显示特定Id的学生信息
+        /// </summary>
+        /// <param name="id">学生Id</param>
+        public void ShowStudentInformations(int id, IOutput output)
+        {
+            var student = QueryStudent(id);
+            if (student == null)
+            {
+                throw new Exception(string.Format("哎呦~  没有这个学生，Id={0}", id));
+            }
+
+            student.ShowInformation(output);
+        }
         public void AddStudent(Student model)
         {
             if (students.Exists(x => x.Id == model.Id))

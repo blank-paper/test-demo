@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlankPaper.ConsoleApp.Presentation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,9 +17,9 @@ namespace BlankPaper.ConsoleApp.Domain.Model
         public decimal Score { get; set; }
 
         #region Action
-        public void ShowInformation()
+        public void ShowInformation(IOutput output)
         {
-            //Console.WriteLine("");
+            output.WriteLine($"{this.Id} - {this.Name}- {this.Score}");
         }
         #endregion
     }
