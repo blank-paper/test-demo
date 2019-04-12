@@ -1,4 +1,5 @@
 ﻿using BlankPaper.ConsoleApp.Domain.Model;
+using BlankPaper.ConsoleApp.Infrastructure;
 using BlankPaper.ConsoleApp.Presentation;
 using System;
 using System.Collections.Generic;
@@ -59,8 +60,29 @@ namespace BlankPaper.ConsoleApp.Domain.Service
                 throw new Exception($"已存在学号为：{model.Id} 的学生！");
             }
 
-            students.Add(model);
+            //students.Add(model);
             //SaveToFile();
+        }
+
+        public void AddUser(UserEntity model)
+        {
+            //Check here.
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                throw new Exception("验证失败，Name不能为空~");
+            }
+
+            var repo = new UserRepository();
+            repo.Add(model);
+            //action here.
+            //model.Type = (int)UserType.Teacher;
+            //model.CreateDate = DateTime.Now;
+            //model.UpdateDate = DateTime.Now;
+            //using (var dbContext = new MyCourseContext())
+            //{
+            //    dbContext.Add(model);
+            //    dbContext.SaveChanges();
+            //}
         }
 
         public Student QueryStudent(int id)

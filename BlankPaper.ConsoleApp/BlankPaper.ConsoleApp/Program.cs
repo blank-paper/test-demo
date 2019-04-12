@@ -1,5 +1,6 @@
 ﻿using BlankPaper.ConsoleApp.Domain.Model;
 using BlankPaper.ConsoleApp.Domain.Service;
+using BlankPaper.ConsoleApp.Infrastructure;
 using BlankPaper.ConsoleApp.Presentation;
 using System;
 
@@ -21,6 +22,7 @@ namespace BlankPaper.ConsoleApp
             Console.WriteLine("请选择你的操作：");
             Console.WriteLine("1.学生添加学生");
             Console.WriteLine("2.通过名字查询");
+            Console.WriteLine("3.添加User");
 
             switch (Console.ReadLine())
             {
@@ -29,6 +31,10 @@ namespace BlankPaper.ConsoleApp
                     service.AddStudent(student);
                     break;
                 case "2": break;
+                case "3":
+                    var user = UIGetUser();
+                    service.AddUser(user);
+                    break;
                 default: break;
             }
 
@@ -51,6 +57,19 @@ namespace BlankPaper.ConsoleApp
 
 
             return student;
+        }
+
+        static UserEntity UIGetUser()
+        {
+            var user = new UserEntity();
+            Console.WriteLine("请输入User基本信息：");
+            Console.Write("===>Name：");
+            user.Name = Console.ReadLine();
+
+            Console.Write("===>Password：");
+            user.Password = Console.ReadLine();
+
+            return user;
         }
 
 
