@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Demo.WebUI.Models
+namespace Demo.Model
 {
     public class Student
     {
@@ -13,4 +10,3 @@ namespace Demo.WebUI.Models
         public string Remark { get; set; }
     }
 }
-
